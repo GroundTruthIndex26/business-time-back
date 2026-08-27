@@ -27,7 +27,8 @@ import {
   X,
 } from "lucide-react";
 
-const ASSET_PATH = `${import.meta.env.BASE_URL}assets/`;
+const APP_ROOT = import.meta.env.BASE_URL;
+const ASSET_PATH = `${APP_ROOT}assets/`;
 
 type DemoStep = "role" | "report" | "map" | "admin" | "plan";
 type RoleId = "operations" | "sales" | "support" | "engineering";
@@ -274,7 +275,7 @@ export default function Home() {
         <section className="closing-section"><div className="closing-section__art" aria-hidden="true" /><div className="closing-section__content"><CapacityMark /><p className="eyebrow">Make a better use of the hours you already have</p><h2>See the work that is<br /><em>getting in the way of the work.</em></h2><p>Explore a populated example, then decide whether your team has one routine worth changing together.</p><button className="button button--light" onClick={startDemo}>Explore the live demo <ArrowDownRight size={18} /></button><span className="closing-section__note"><ShieldCheck size={15} /> No account needed to explore</span></div></section>
       </main>
 
-      <footer className="site-footer"><div className="site-footer__brand"><CapacityMark /><span>Business Time Back</span></div><p>Business Time Back is a product of <a href="https://phronesislabs.net" target="_blank" rel="noreferrer">Phronesis Labs, LLC</a>. Workforce time intelligence for teams that want to improve work without monitoring people.</p><div className="footer-links"><a href="mailto:contact@phronesislabs.net">contact@phronesislabs.net</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="#top">Back to top <ArrowRight size={15} /></a></div></footer>
+      <footer className="site-footer"><div className="site-footer__brand"><CapacityMark /><span>Business Time Back</span></div><p>Business Time Back is a product of <a href="https://phronesislabs.net" target="_blank" rel="noreferrer">Phronesis Labs, LLC</a>. Workforce time intelligence for teams that want to improve work without monitoring people.</p><div className="footer-links"><a href="mailto:contact@phronesislabs.net">contact@phronesislabs.net</a><a href={`${APP_ROOT}privacy`}>Privacy</a><a href={`${APP_ROOT}terms`}>Terms</a><a href="#top">Back to top <ArrowRight size={15} /></a></div></footer>
     </div>
   );
 }

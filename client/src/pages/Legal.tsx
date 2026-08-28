@@ -3,10 +3,9 @@
  * language while presenting the user-supplied policy structure clearly.
  */
 import { ArrowLeft, ArrowRight, ShieldCheck } from "lucide-react";
+import { APP_ROOT, ASSET_PATH } from "@/lib/sitePaths";
 
 type LegalKind = "privacy" | "terms";
-const APP_ROOT = import.meta.env.BASE_URL;
-const ASSET_PATH = `${APP_ROOT}assets/`;
 
 function LegalHeader() {
   return <header className="legal-header"><a href={APP_ROOT} className="wordmark" aria-label="Business Time Back home"><img className="wordmark__mark" src={`${ASSET_PATH}btb-rebuild-capacity-mark.png`} alt="Business Time Back" /><span>Business Time Back</span></a><a className="legal-header__back" href={APP_ROOT}><ArrowLeft size={15} /> Back to the product</a></header>;

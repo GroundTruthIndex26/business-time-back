@@ -3,11 +3,15 @@
  * guided walkthrough, Capacity Teal emphasis, and zero surveillance language.
  */
 import { useState } from "react";
+import { LaunchSignupDialog } from "@/components/LaunchSignupDialog";
+import { ExitIntentSignup } from "@/components/ExitIntentSignup";
+import { APP_ROOT, ASSET_PATH } from "@/lib/sitePaths";
 import "@/live-demo.css";
 import "@/live-demo-complete.css";
 import "@/elite-positioning.css";
+import "@/waitlist.css";
+import "@/waitlist-success-override.css";
 import {
-  ArrowDownRight,
   ArrowRight,
   Check,
   ChevronDown,
@@ -26,9 +30,6 @@ import {
   UsersRound,
   X,
 } from "lucide-react";
-
-const APP_ROOT = import.meta.env.BASE_URL;
-const ASSET_PATH = `${APP_ROOT}assets/`;
 
 type DemoStep = "role" | "report" | "map" | "admin" | "plan";
 type RoleId = "operations" | "sales" | "support" | "engineering";
@@ -97,11 +98,6 @@ export default function Home() {
   const reportingShare = Math.round((taskHours.reporting / totalTaskHours) * 100);
   const planGain = (Number(team.recovered) * selectedPlan.gain).toFixed(1);
 
-  const startDemo = () => {
-    setDemoStep("role");
-    document.getElementById("live-demo")?.scrollIntoView({ behavior: "smooth", block: "center" });
-  };
-
   const adjustTask = (task: keyof typeof initialTaskHours, change: number) => {
     setTaskHours((current) => ({ ...current, [task]: Math.min(14, Math.max(0, current[task] + change)) }));
   };
@@ -118,22 +114,23 @@ export default function Home() {
           <a href="#why-it-works" onClick={() => setMenuOpen(false)}>Why self-report</a>
           <a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a>
           <a className="nav-signin" href="mailto:hello@phronesislabs.net?subject=Business%20Time%20Back%20workspace%20access" onClick={() => setMenuOpen(false)}>Returning user? Sign in <ArrowRight size={14} /></a>
-          <a className="launch-cta" href="mailto:contact@phronesislabs.net?subject=Business%20Time%20Back%20launch%20notification&body=Please%20notify%20me%20when%20Business%20Time%20Back%20launches.">Want launch updates? <span>Notify me <ArrowRight size={14} /></span></a>
+          <LaunchSignupDialog className="launch-cta" source="header">Notify me of launch <ArrowRight size={14} /></LaunchSignupDialog>
         </nav>
         <button className="menu-button" aria-label="Toggle menu" aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)}>
           {menuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </header>
+      <ExitIntentSignup />
 
       <main id="top">
         <section className="hero-section" aria-labelledby="hero-heading">
-          <div className="hero-section__art" aria-hidden="true" />
+          <div className="hero-section__art" aria-hidden="true" style={{ backgroundImage: `linear-gradient(90deg,rgba(248,244,233,1) 0%,rgba(248,244,233,.96) 38%,rgba(248,244,233,.6) 54%,rgba(248,244,233,.1) 77%),url('${ASSET_PATH}btb-rebuild-hero.jpg')` }} />
           <div className="hero-section__content">
             <div className="kicker"><span className="kicker__dot" /> For operations leaders at growing service teams</div>
             <h1 id="hero-heading">Make room for the work<br /><em>only your team can do.</em></h1>
             <p className="hero-section__lede">Business Time Back turns quick, self-reported estimates of reporting, inboxes, meetings, and coordination into a shared plan to reduce repeat work—without employee monitoring.</p>
             <div className="hero-section__actions">
-              <button className="button button--primary" onClick={startDemo}>Explore the live demo <ArrowDownRight size={18} /></button>
+              <LaunchSignupDialog className="button button--primary" source="hero">Notify me of launch <ArrowRight size={18} /></LaunchSignupDialog>
               <a className="quiet-link" href="#how-it-works">See how it works <ArrowRight size={16} /></a>
             </div>
             <p className="hero-section__reassurance"><ShieldCheck size={15} /> No account needed. Built from self-reported estimates, not activity tracking.</p>
@@ -155,7 +152,7 @@ export default function Home() {
             <h2 id="story-heading">Your calendar is not<br /><em>the whole story.</em></h2>
             <p className="large-copy">Your team is already working hard. The question is which routines are quietly taking the hours your customers, decisions, and focused work need.</p>
             <p>Reporting, coordination, inboxes, status rituals, and scheduling are all part of a working team. But when they expand without anyone seeing the full picture, they start to take time from the work only people can do. Business Time Back makes those patterns visible enough to improve together.</p>
-            <a className="inline-cta" href="#live-demo">Walk through the opportunity map <ArrowRight size={17} /></a>
+            <LaunchSignupDialog className="inline-cta" source="story">Notify me of launch <ArrowRight size={17} /></LaunchSignupDialog>
           </div>
           <div className="story-section__image"><img src={`${ASSET_PATH}btb-rebuild-trust-detail.jpg`} alt="Colleagues reviewing a workflow together on paper" /><span className="image-caption">Work should be visible enough to improve,<br />without turning people into data points.</span></div>
         </section>
@@ -263,8 +260,8 @@ export default function Home() {
         </section>
 
         <section className="commercial-section" aria-labelledby="commercial-heading">
-          <div className="commercial-section__copy"><SectionLabel number="06">A clear next step</SectionLabel><p className="eyebrow">Explore before you commit</p><h2 id="commercial-heading">See the work that is getting<br /><em>in the way of the work.</em></h2><p>Explore a populated example, then decide whether your team has one routine worth changing together. If the approach fits, we can discuss scope, privacy expectations, and a tailored plan.</p><button className="button button--primary" onClick={startDemo}>Explore the live demo <ArrowDownRight size={18} /></button></div>
-          <div className="commercial-card"><span className="commercial-card__label">What you will see in the live demo</span><ul><li><Check size={17} /> A role-relevant starting point</li><li><Check size={17} /> Self-reported task estimates</li><li><Check size={17} /> A team-level opportunity map</li><li><Check size={17} /> One focused change plan</li></ul><div className="commercial-card__footer"><span>Explore first. Decide on scope later.</span><a href="mailto:hello@phronesislabs.net?subject=Business%20Time%20Back%20team%20plan">Ask about your team <ArrowRight size={15} /></a></div></div>
+          <div className="commercial-section__copy"><SectionLabel number="06">A clear next step</SectionLabel><p className="eyebrow">Explore before you commit</p><h2 id="commercial-heading">See the work that is getting<br /><em>in the way of the work.</em></h2><p>Explore a populated example, then decide whether your team has one routine worth changing together. If the approach fits, we can discuss scope, privacy expectations, and a tailored plan.</p><LaunchSignupDialog className="button button--primary" source="commercial">Notify me of launch <ArrowRight size={18} /></LaunchSignupDialog></div>
+          <div className="commercial-card"><span className="commercial-card__label">What you will see in the live demo</span><ul><li><Check size={17} /> A role-relevant starting point</li><li><Check size={17} /> Self-reported task estimates</li><li><Check size={17} /> A team-level opportunity map</li><li><Check size={17} /> One focused change plan</li></ul><div className="commercial-card__footer"><span>Explore first. Decide on scope later.</span><LaunchSignupDialog className="commercial-card__notify" source="commercial">Notify me of launch <ArrowRight size={15} /></LaunchSignupDialog></div></div>
         </section>
 
         <section className="faq-section" id="faq" aria-labelledby="faq-heading">
@@ -272,7 +269,7 @@ export default function Home() {
           <div className="faq-list">{faqs.map((faq) => <details key={faq.question}><summary>{faq.question}<ChevronDown size={20} /></summary><p>{faq.answer}</p></details>)}</div>
         </section>
 
-        <section className="closing-section"><div className="closing-section__art" aria-hidden="true" /><div className="closing-section__content"><CapacityMark /><p className="eyebrow">Make a better use of the hours you already have</p><h2>See the work that is<br /><em>getting in the way of the work.</em></h2><p>Explore a populated example, then decide whether your team has one routine worth changing together.</p><button className="button button--light" onClick={startDemo}>Explore the live demo <ArrowDownRight size={18} /></button><span className="closing-section__note"><ShieldCheck size={15} /> No account needed to explore</span></div></section>
+        <section className="closing-section"><div className="closing-section__art" aria-hidden="true" style={{ backgroundImage: `linear-gradient(90deg,rgba(12,49,52,.97) 0%,rgba(12,49,52,.86) 46%,rgba(12,49,52,.23) 100%),url('${ASSET_PATH}btb-rebuild-product-map.jpg')` }} /><div className="closing-section__content"><CapacityMark /><p className="eyebrow">Make a better use of the hours you already have</p><h2>See the work that is<br /><em>getting in the way of the work.</em></h2><p>Explore a populated example, then decide whether your team has one routine worth changing together.</p><LaunchSignupDialog className="button button--light" source="closing">Notify me of launch <ArrowRight size={18} /></LaunchSignupDialog><span className="closing-section__note"><ShieldCheck size={15} /> No account needed to explore</span></div></section>
       </main>
 
       <footer className="site-footer"><div className="site-footer__brand"><CapacityMark /><span>Business Time Back</span></div><p>Business Time Back is a product of <a href="https://phronesislabs.net" target="_blank" rel="noreferrer">Phronesis Labs, LLC</a>. Workforce time intelligence for teams that want to improve work without monitoring people.</p><div className="footer-links"><a href="mailto:contact@phronesislabs.net">contact@phronesislabs.net</a><a href={`${APP_ROOT}privacy`}>Privacy</a><a href={`${APP_ROOT}terms`}>Terms</a><a href="#top">Back to top <ArrowRight size={15} /></a></div></footer>

@@ -5,7 +5,7 @@ import path from "node:path";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  base: "/business-time-back/",
+  base: "./",
   plugins: [react(), tailwindcss(), jsxLocPlugin()],
   resolve: {
     alias: {

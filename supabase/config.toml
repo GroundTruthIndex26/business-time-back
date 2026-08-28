@@ -1,0 +1,5 @@
+# Business Time Back public waitlist function configuration.
+project_id = "wmpttwpkybynwisdsljl"
+
+[functions.launch-waitlist]
+verify_jwt = false

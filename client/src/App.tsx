@@ -7,11 +7,12 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import "./legal.css";
 import "./github-pages.css";
+import { APP_ROOT } from "./lib/sitePaths";
 import Home from "./pages/Home";
 import { PrivacyPage, TermsPage } from "./pages/Legal";
 
 function Router() {
-  const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+  const base = APP_ROOT === "/" ? "" : APP_ROOT.replace(/\/$/, "");
   return <WouterRouter base={base}><Switch><Route path="/" component={Home} /><Route path="/privacy" component={PrivacyPage} /><Route path="/terms" component={TermsPage} /><Route path="/404" component={NotFound} /><Route component={NotFound} /></Switch></WouterRouter>;
 }
 

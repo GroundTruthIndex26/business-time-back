@@ -2,11 +2,89 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1"
+    />
     <meta name="theme-color" content="#f8f4e9" />
-    <meta name="description" content="Business Time Back helps operations leaders see where working hours go and make a plan to give time back to meaningful work." />
-    <link rel="icon" type="image/png" href="%BASE_URL%assets/btb-rebuild-capacity-mark.png" />
-    <title>Business Time Back — Make Room for Work That Matters</title>
+    <meta
+      name="description"
+      content="Business Time Back helps operations leaders see where working hours go and make a plan to give time back to meaningful work."
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="%BASE_URL%assets/btb-rebuild-capacity-mark.png"
+    />
+    <title>Business Time Back: Make Room for Work That Matters</title>
+
+    <!--
+      Conversion tracking (x3, x4). Replace the placeholder IDs below with real
+      ones before launch:
+        - GA4:  G-XXXXXXXXXX  -> your Google Analytics 4 Measurement ID
+        - Meta: 000000000000000 -> your Meta Pixel ID
+        - Clarity: xxxxxxxxxx -> your Microsoft Clarity project ID
+      All three are free and safe to leave in place with real IDs even before
+      the pricing/checkout flow exists; they will just track waitlist signups.
+    -->
+    <!-- Google tag (gtag.js) - GA4 -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-XXXXXXXXXX");
+    </script>
+
+    <!-- Meta Pixel Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js"
+      );
+      fbq("init", "000000000000000");
+      fbq("track", "PageView");
+    </script>
+
+    <!-- Microsoft Clarity (free heatmaps + session recordings) -->
+    <script>
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "xxxxxxxxxx");
+    </script>
   </head>
   <body>
     <div id="root"></div>

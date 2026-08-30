@@ -1,0 +1,318 @@
+/**
+ * Conversion audit fixes: hero urgency line, competitor comparison table,
+ * pricing section, and honest-proof impact stats. Written as normal
+ * (non-minified) CSS on top of index.css's design tokens so it stays easy
+ * to edit later.
+ */
+
+/* --- Hero urgency line (y1) --- */
+.hero-section__urgency {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 10px 0 0;
+  color: var(--teal-deep);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.hero-section__urgency svg {
+  color: var(--orange);
+}
+
+/* --- Comparison section (p4) --- */
+.comparison-section {
+  display: grid;
+  gap: 50px;
+  padding: 120px 5.5vw;
+  background: var(--paper);
+}
+.comparison-section__heading {
+  display: grid;
+  grid-template-columns: 16% 1fr;
+  gap: 50px;
+}
+.comparison-section__note {
+  max-width: 640px;
+  margin: 24px 0 0;
+  color: #4d6567;
+  font-size: 14px;
+  line-height: 1.8;
+}
+.comparison-table {
+  margin-left: 16%;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+  overflow-x: auto;
+}
+.comparison-table__row {
+  display: grid;
+  grid-template-columns: 1.1fr 1.3fr 1.5fr 1.3fr;
+  min-width: 640px;
+}
+.comparison-table__row > span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 16px 18px;
+  color: #4d6567;
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+.comparison-table__row--head > span {
+  color: var(--ink-soft);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.comparison-table__row--featured {
+  background: var(--teal-pale);
+}
+.comparison-table__row--featured > span {
+  color: var(--ink);
+  font-weight: 700;
+}
+.comparison-table__row--featured svg {
+  color: var(--teal-deep);
+  flex: 0 0 auto;
+}
+.comparison-table__row:not(.comparison-table__row--featured):not(
+    .comparison-table__row--head
+  )
+  svg {
+  color: var(--orange);
+  flex: 0 0 auto;
+}
+.comparison-table__mark {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+/* --- Honest-proof impact stats (y2, s1 replacement) --- */
+.impact-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 28px;
+  margin-top: 40px;
+  border-top: 1px solid var(--line);
+  padding-top: 28px;
+}
+.impact-stats__item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.impact-stats__item strong {
+  font-family: "DM Serif Display", serif;
+  font-size: 40px;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  color: var(--teal-deep);
+  line-height: 1;
+}
+.impact-stats__item span {
+  color: #4d6567;
+  font-size: 12.5px;
+  line-height: 1.6;
+}
+.impact-stats__note {
+  grid-column: 1 / -1;
+  margin: 4px 0 0;
+  color: var(--ink-soft);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 0.03em;
+  line-height: 1.7;
+}
+
+/* --- Pricing section (pr1-pr5) --- */
+.pricing-section {
+  display: grid;
+  gap: 55px;
+  padding: 130px 5.5vw;
+  background: var(--paper-deep);
+}
+.pricing-section__heading {
+  display: grid;
+  grid-template-columns: 16% 1fr;
+  gap: 50px;
+}
+.pricing-section__note {
+  max-width: 620px;
+  margin: 24px 0 0;
+  color: #4d6567;
+  font-size: 14px;
+  line-height: 1.8;
+}
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-left: 16%;
+}
+.pricing-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  padding: 30px 26px;
+  background: var(--paper);
+}
+.pricing-card--featured {
+  border: 2px solid var(--teal);
+  box-shadow: 10px 11px 0 rgba(23, 52, 56, 0.1);
+}
+.pricing-card__badge {
+  position: absolute;
+  top: -13px;
+  left: 26px;
+  padding: 5px 10px;
+  background: var(--teal);
+  color: #fff;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.pricing-card h3 {
+  margin: 6px 0 8px;
+  font-family: "DM Serif Display", serif;
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+}
+.pricing-card__description {
+  margin: 0 0 20px;
+  color: #5c6f70;
+  font-size: 12.5px;
+  line-height: 1.6;
+  min-height: 38px;
+}
+.pricing-card__price {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.pricing-card__price strong {
+  font-family: "DM Serif Display", serif;
+  font-size: 44px;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+.pricing-card__price span {
+  color: var(--ink-soft);
+  font-size: 12px;
+}
+.pricing-card__annual {
+  margin: 6px 0 0;
+  color: var(--teal-deep);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 10px;
+  font-weight: 600;
+}
+.pricing-card ul {
+  display: grid;
+  gap: 12px;
+  margin: 24px 0 28px;
+  padding: 0;
+  list-style: none;
+}
+.pricing-card li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  color: #426062;
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+.pricing-card li svg {
+  flex: 0 0 auto;
+  margin-top: 2px;
+  color: var(--teal-deep);
+}
+.pricing-card__cta {
+  margin-top: auto;
+  width: 100%;
+}
+.button--outline {
+  border: 1px solid var(--ink) !important;
+  background: transparent;
+  color: var(--ink);
+}
+.button--outline:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+.pricing-section__guarantee {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 16%;
+  color: #426062;
+  font-size: 12.5px;
+  font-weight: 600;
+}
+.pricing-section__guarantee svg {
+  color: var(--teal-deep);
+  flex: 0 0 auto;
+}
+
+@media (max-width: 1050px) {
+  .comparison-section__heading,
+  .pricing-section__heading {
+    grid-template-columns: 19% 1fr;
+  }
+  .comparison-table,
+  .pricing-grid,
+  .pricing-section__guarantee {
+    margin-left: 19%;
+  }
+  .pricing-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 800px) {
+  .comparison-section,
+  .pricing-section {
+    padding-right: 6vw;
+    padding-left: 6vw;
+  }
+  .comparison-section__heading,
+  .pricing-section__heading {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .comparison-table,
+  .pricing-grid,
+  .pricing-section__guarantee {
+    margin-left: 0;
+  }
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+  .impact-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .comparison-table__row {
+    min-width: 560px;
+  }
+  .impact-stats__item strong {
+    font-size: 34px;
+  }
+  .pricing-card__price strong {
+    font-size: 38px;
+  }
+}

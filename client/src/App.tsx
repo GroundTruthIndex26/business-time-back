@@ -1,46 +1,21 @@
-/** Business Time Back — route table for the marketing site. */
-import { ReactElement } from "react";
+/** Better Work, Visible: keep the product landing page warm, light, and human-centered. */
+import { Toaster } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import NotFound from "@/pages/NotFound";
 import { Route, Router as WouterRouter, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
-import { ROUTER_BASE } from "./lib/sitePaths";
-import About from "./pages/About";
-import Faq from "./pages/Faq";
+import { ThemeProvider } from "./contexts/ThemeContext";
+import "./legal.css";
+import "./github-pages.css";
+import { APP_ROOT } from "./lib/sitePaths";
 import Home from "./pages/Home";
-import HowItWorks from "./pages/HowItWorks";
-import NotFound from "./pages/NotFound";
-import Privacy from "./pages/Privacy";
-import Terms from "./pages/Terms";
-import VsTimeTracking from "./pages/VsTimeTracking";
-
-/** Every content route, matched with and without the trailing slash. */
-const ROUTES: [string, () => ReactElement][] = [
-  ["/how-it-works", HowItWorks],
-  ["/business-time-back-vs-time-tracking", VsTimeTracking],
-  ["/faq", Faq],
-  ["/about", About],
-  ["/privacy", Privacy],
-  ["/terms", Terms],
-];
+import { PrivacyPage, TermsPage } from "./pages/Legal";
 
 function Router() {
-  return (
-    <WouterRouter base={ROUTER_BASE}>
-      <Switch>
-        <Route path="/" component={Home} />
-        {ROUTES.flatMap(([path, Component]) => [
-          <Route key={path} path={path} component={Component} />,
-          <Route key={`${path}/`} path={`${path}/`} component={Component} />,
-        ])}
-        <Route component={NotFound} />
-      </Switch>
-    </WouterRouter>
-  );
+  const base = APP_ROOT === "/" ? "" : APP_ROOT.replace(/\/$/, "");
+  return <WouterRouter base={base}><Switch><Route path="/" component={Home} /><Route path="/privacy" component={PrivacyPage} /><Route path="/terms" component={TermsPage} /><Route path="/404" component={NotFound} /><Route component={NotFound} /></Switch></WouterRouter>;
 }
 
 export default function App() {
-  return (
-    <ErrorBoundary>
-      <Router />
-    </ErrorBoundary>
-  );
+  return <ErrorBoundary><ThemeProvider defaultTheme="light"><TooltipProvider><Toaster /><Router /></TooltipProvider></ThemeProvider></ErrorBoundary>;
 }

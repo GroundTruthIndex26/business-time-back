@@ -1,0 +1,6 @@
+/**
+ * Better Work, Visible: reinforce the Elite SaaS Marketer hierarchy by making
+ * buyer fit and honest non-fit language visible without competing with the CTA.
+ */
+.fit-section__note{max-width:360px;margin:29px 0 0;padding:15px 0 0;border-top:1px solid var(--line);font-size:11px;line-height:1.7;color:var(--ink-soft)}.fit-section__note strong{color:var(--ink)}
+@media(max-width:800px){.fit-section__note{max-width:520px}}

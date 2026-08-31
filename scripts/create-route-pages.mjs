@@ -4,8 +4,11 @@
  * Vite builds one index.html with relative asset URLs ("./assets/app.js"). A route
  * served from /privacy/ would resolve those to /privacy/assets/... and 404, which
  * is why the legal pages used to render blank. Each copy therefore gets its asset
- * URLs rewritten to the right depth, plus its own title/description/canonical so
- * the page is correct before React boots.
+ * URLs rewritten to the right depth, plus its own title/description/canonical and
+ * JSON-LD so the page is correct before React boots.
+ *
+ * Also emits sitemap.xml, llms.txt, and llms-full.txt from the same content
+ * module, so pages, sitemap, and AI-crawler files cannot drift apart.
  */
 import { build } from "esbuild";
 import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
@@ -18,7 +21,7 @@ const OUT = resolve("dist/public");
 async function loadMeta() {
   const tmp = resolve("dist/.meta.mjs");
   await build({
-    entryPoints: [resolve("client/src/content/site.ts")],
+    entryPoints: [resolve("client/src/content/derived.ts")],
     bundle: true,
     format: "esm",
     platform: "node",
@@ -27,7 +30,13 @@ async function loadMeta() {
   });
   const mod = await import(`${pathToFileURL(tmp).href}?t=${Date.now()}`);
   await rm(tmp, { force: true });
-  return { META: mod.META, BRAND: mod.BRAND };
+  return {
+    META: mod.META,
+    BRAND: mod.BRAND,
+    schemaFor: mod.schemaFor,
+    llmsTxt: mod.llmsTxt,
+    llmsFullTxt: mod.llmsFullTxt,
+  };
 }
 
 const escape = s =>
@@ -37,6 +46,9 @@ const escape = s =>
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
 
+/** JSON-LD payload, with "<" escaped so "</script>" can never terminate the tag. */
+const jsonLd = obj => JSON.stringify(obj).replace(/</g, "\\u003c");
+
 /** Swap the content of a tag/attribute that already exists in the shell. */
 function replaceTag(html, pattern, replacement) {
   if (!pattern.test(html))
@@ -44,7 +56,7 @@ function replaceTag(html, pattern, replacement) {
   return html.replace(pattern, replacement);
 }
 
-function pageHtml(shell, meta, brand, depth) {
+function pageHtml(shell, meta, brand, depth, schema) {
   let html = shell;
 
   // 1. Re-point relative asset URLs at the right directory depth.
@@ -87,8 +99,26 @@ function pageHtml(shell, meta, brand, depth) {
     /<meta\s+property="og:url"\s+content="[^"]*"\s*\/?>/,
     `<meta property="og:url" content="${url}" />`
   );
+  html = replaceTag(
+    html,
+    /<meta\s+name="twitter:title"\s+content="[\s\S]*?"\s*\/?>/,
+    `<meta name="twitter:title" content="${escape(meta.title)}" />`
+  );
+  html = replaceTag(
+    html,
+    /<meta\s+name="twitter:description"\s+content="[\s\S]*?"\s*\/?>/,
+    `<meta name="twitter:description" content="${escape(meta.description)}" />`
+  );
 
-  // 2. Stamp the stylesheet scope so the page paints correctly before React mounts.
+  // 2. Per-route JSON-LD, injected just before </head> so crawlers that skip
+  //    JavaScript still see the structured data.
+  html = replaceTag(
+    html,
+    /<\/head>/,
+    `<script type="application/ld+json">${jsonLd(schema)}</script>\n  </head>`
+  );
+
+  // 3. Stamp the stylesheet scope so the page paints correctly before React mounts.
   const bodyClass = meta.path === "/" ? "page-home" : "page-doc";
   html = replaceTag(
     html,
@@ -99,13 +129,19 @@ function pageHtml(shell, meta, brand, depth) {
   return html;
 }
 
-const { META, BRAND } = await loadMeta();
+const { META, BRAND, schemaFor, llmsTxt, llmsFullTxt } = await loadMeta();
 const shell = await readFile(resolve(OUT, "index.html"), "utf8");
 const routes = Object.values(META);
 
 for (const meta of routes) {
   const segments = meta.path.split("/").filter(Boolean);
-  const html = pageHtml(shell, meta, BRAND, segments.length);
+  const html = pageHtml(
+    shell,
+    meta,
+    BRAND,
+    segments.length,
+    schemaFor(meta.path)
+  );
   if (segments.length === 0) {
     await writeFile(resolve(OUT, "index.html"), html);
   } else {
@@ -115,12 +151,22 @@ for (const meta of routes) {
   }
 }
 
+const lastmod = new Date().toISOString().slice(0, 10);
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${routes.map(m => `  <url><loc>${BRAND.origin}${m.path}</loc></url>`).join("\n")}
+${routes
+  .map(
+    m =>
+      `  <url><loc>${BRAND.origin}${m.path}</loc><lastmod>${lastmod}</lastmod></url>`
+  )
+  .join("\n")}
 </urlset>
 `;
 await writeFile(resolve(OUT, "sitemap.xml"), sitemap);
+await writeFile(resolve(OUT, "llms.txt"), llmsTxt());
+await writeFile(resolve(OUT, "llms-full.txt"), llmsFullTxt());
 
-console.log(`Emitted ${routes.length} route pages + sitemap.xml`);
+console.log(
+  `Emitted ${routes.length} route pages + sitemap.xml + llms.txt + llms-full.txt`
+);
 for (const m of routes) console.log(`  ${m.path}`);

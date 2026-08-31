@@ -47,6 +47,8 @@ const REQUIRED_FILES = [
   "robots.txt",
   "favicon.ico",
   "og.png",
+  "llms.txt",
+  "llms-full.txt",
 ];
 
 const pageFor = route => join(OUT, route.replace(/^\//, ""), "index.html");
@@ -113,13 +115,33 @@ for (const route of ROUTES) {
   if (!bad) ok(`assets for ${route} (${refs.length} resolved)`);
 }
 
-// 4. Supporting files.
+// 4. Every route carries parseable JSON-LD, so structured data survives builds.
+for (const route of ROUTES) {
+  const file = pageFor(route);
+  if (!(await exists(file))) continue;
+  const html = await readFile(file, "utf8");
+  const m = html.match(
+    /<script type="application\/ld\+json">([\s\S]*?)<\/script>/
+  );
+  if (!m) {
+    fail(`JSON-LD for ${route}`, "no application/ld+json script");
+    continue;
+  }
+  try {
+    JSON.parse(m[1]);
+    ok(`JSON-LD for ${route} parses`);
+  } catch (e) {
+    fail(`JSON-LD for ${route}`, `does not parse: ${e.message}`);
+  }
+}
+
+// 5. Supporting files.
 for (const name of REQUIRED_FILES) {
   if (await exists(join(OUT, name))) ok(`${name} present`);
   else fail(`${name} present`, "missing from build output");
 }
 
-// 5. The sitemap must list every route, so routes and sitemap cannot drift.
+// 6. The sitemap must list every route, so routes and sitemap cannot drift.
 if (await exists(join(OUT, "sitemap.xml"))) {
   const xml = await readFile(join(OUT, "sitemap.xml"), "utf8");
   const missing = ROUTES.filter(r => !xml.includes(`${r}</loc>`));

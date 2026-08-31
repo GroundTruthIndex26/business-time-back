@@ -5,11 +5,12 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite --host",
-    "build": "vite build && node scripts/create-route-pages.mjs",
+    "build": "vite build && node scripts/create-route-pages.mjs && node scripts/verify-build.mjs",
     "start": "NODE_ENV=production node dist/index.js",
     "preview": "vite preview --host",
     "check": "tsc --noEmit",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "verify": "node scripts/verify-build.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

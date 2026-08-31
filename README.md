@@ -71,9 +71,40 @@ function URL and migrate the existing `emails` rows.
 
 ## Deployment
 
-Push to `main` to build and deploy through GitHub Pages (`github-pages` environment).
+`businesstimeback.com` is served by the Cloudflare Pages project `timeback-site`
+(the project name is historical; it builds this repo). Pushes to `main` build and
+deploy automatically:
 
-Note: `businesstimeback.com` currently resolves to Cloudflare, not GitHub Pages, so
-a push publishes to `groundtruthindex26.github.io/business-time-back/` rather than
-the custom domain. Point the domain's DNS at GitHub Pages (or deploy `dist/public`
-to Cloudflare) for this repo to serve the live site.
+```
+Build command:  pnpm build
+Output dir:     dist/public
+Node:           .node-version
+```
+
+### The deploy gate
+
+`pnpm build` ends by running `pnpm verify` (`scripts/verify-build.mjs`), which
+asserts the output is actually servable: every route has its own page and title,
+every referenced asset resolves **from that page's own directory**, and the
+supporting files and sitemap are present.
+
+This is not ceremony. Cloudflare once ran a build here with no build command,
+treated the repo root as the output directory, published an empty directory,
+reported success, and promoted it to the live domain. Because `verify` runs
+inside `build`, that build now fails and nothing is published.
+
+CI (`.github/workflows/ci.yml`) runs the same typecheck, build and verification
+on every pull request.
+
+### Changing the site safely
+
+Push a branch and open a PR rather than committing to `main`:
+
+1. CI typechecks, builds and verifies the output.
+2. Cloudflare builds a preview at `<branch>.timeback-site.pages.dev` — a real
+   deployment on real infrastructure, with the live domain untouched.
+3. Check the preview, then merge. Merging to `main` deploys to production.
+
+If a production deploy ever goes wrong: Cloudflare dashboard → the project →
+**Deployments** → pick the last good one → **Manage deployment** → **Rollback to
+this deployment**. It takes seconds.

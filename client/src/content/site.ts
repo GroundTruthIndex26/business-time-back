@@ -43,26 +43,25 @@ export type PageMeta = { title: string; description: string; path: string };
 export const META: Record<string, PageMeta> = {
   home: {
     path: "/",
-    title:
-      "Business Time Back — Win Back Hours for Your Small Business, by Phronesis Labs",
+    title: "Business Time Back — Win Back Hours for Your Small Business",
     description:
-      "Business Time Back helps small business owners see where their week actually goes — admin, inventory, customer service, marketing, fulfillment — and plan how to win back hours for growing the business.",
+      "See where your week actually goes — admin, inventory, customer service, marketing, fulfillment — and plan how to win back hours to grow your business.",
   },
   howItWorks: {
     path: "/how-it-works/",
     title: "How Business Time Back works: see where your week goes",
     description:
-      "Business Time Back maps your week at the task level — admin, inventory, customer service, marketing, fulfillment — shows how many hours are recoverable, and helps you plan one high-value change. Here is the method, step by step.",
+      "Business Time Back maps your week at the task level, shows how many hours are recoverable, and helps you plan one high-value change. The method, step by step.",
   },
   vsTimeTracking: {
     path: "/business-time-back-vs-time-tracking/",
     title: "Business Time Back vs. time tracking: what's the difference?",
     description:
-      "A time tracker records how hours were spent. Business Time Back estimates where your week goes by task and turns that into a plan for recovering time. Here is how the two differ, and when to use which.",
+      "A time tracker records how hours were spent. Business Time Back estimates where your week goes by task and turns that into a plan for recovering time.",
   },
   faq: {
     path: "/faq/",
-    title: "Business Time Back FAQ: time intelligence, privacy, and setup",
+    title: "Business Time Back FAQ: time intelligence, privacy, setup",
     description:
       "What Business Time Back is, how it differs from time tracking, how it treats privacy, how long setup takes, and who it is for.",
   },

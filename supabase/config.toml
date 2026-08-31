@@ -1,5 +1,5 @@
-# Business Time Back public waitlist function configuration.
-project_id = "wmpttwpkybynwisdsljl"
+# Business Time Back — pre-launch interest capture.
+project_id = "lzaxogmrznaxudqekoua"
 
-[functions.launch-waitlist]
+[functions.prelaunch-interest]
 verify_jwt = false

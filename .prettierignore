@@ -3,3 +3,7 @@ node_modules
 .git
 *.min.js
 *.min.css
+
+# Ported verbatim from the live site; keep original formatting for diffing.
+client/src/styles/home.css
+client/src/styles/site.css

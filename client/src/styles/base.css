@@ -1,0 +1,28 @@
+/**
+ * Global shell only. Everything else lives in the two scoped stylesheets:
+ *   home.css → body.page-home   (landing page + demo)
+ *   site.css → body.page-doc    (how it works, FAQ, about, legal, 404)
+ */
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap");
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  /* Painted before the route's own scoped background takes over, so a slow
+     first paint never flashes white. */
+  background: #eef7f4;
+}
+
+body.page-doc {
+  background: #f4f8f7;
+}
+
+@media (prefers-color-scheme: dark) {
+  body.page-doc {
+    background: #0a1618;
+  }
+}

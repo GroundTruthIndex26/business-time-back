@@ -81,13 +81,6 @@ const softwareApplication: Node = {
   description: META.home.description,
   creator: { "@id": ORG_ID },
   sameAs: [LINKEDIN],
-  offers: {
-    "@type": "AggregateOffer",
-    priceCurrency: "USD",
-    lowPrice: "29",
-    highPrice: "79",
-    availability: "https://schema.org/PreOrder",
-  },
 };
 
 /** Breadcrumb label per route, matching the visible breadcrumbs. */
@@ -269,16 +262,8 @@ function renderHome(): string {
     h.comparison.advice.map(a => `- ${a.title}: ${plain(a.body)}`).join("\n")
   );
   parts.push(
-    `## Pricing (pre-launch)`,
-    plain(h.pricing.ctaNote),
-    h.pricing.plans
-      .map(p =>
-        "customPrice" in p && p.customPrice
-          ? `- ${p.name}: ${p.customPrice} — ${p.desc}`
-          : `- ${p.name}: ${"currency" in p ? p.currency : ""}${"amount" in p ? p.amount : ""}${"period" in p ? p.period : ""} — ${p.desc}`
-      )
-      .join("\n"),
-    ...h.pricing.guarantee.body.map(plain)
+    `## Availability`,
+    "Business Time Back is pre-launch and not on sale yet. The form on the site collects emails for a launch notification only."
   );
   parts.push(
     `## ${h.faq.heading}`,
@@ -314,7 +299,7 @@ Business Time Back is a pre-launch time-intelligence tool from ${BRAND.parent} (
 - Works from quick self-reported estimates by task (admin, inventory, customer service, marketing, fulfillment) — no activity tracking, keystroke logging, or screen monitoring.
 - Estimates are directional: they identify and rank recoverable hours; they do not guarantee savings.
 - Built by ${BRAND.parent}, a thought lab and idea incubator founded by Brooke Houck, PhD, on the same workforce model as ${BRAND.siblingProduct} (${BRAND.siblingProductUrl}).
-- Not on sale yet: the pre-launch list gets 35% off at launch. Planned pricing: Starter $29/month, Professional $79/month, Enterprise custom.
+- Pre-launch: not on sale yet. The form on the site collects emails for a launch notification only.
 - Contact: ${BRAND.email}
 
 Note: this site is a JavaScript application; page HTML contains metadata but body text renders client-side. The full text of every page is in [llms-full.txt](${BRAND.origin}/llms-full.txt).

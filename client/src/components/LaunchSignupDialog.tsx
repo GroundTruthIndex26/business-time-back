@@ -10,7 +10,7 @@ import "@/waitlist-validation.css";
 import "@/github-waitlist.css";
 
 type WaitlistSource = "header" | "hero" | "story" | "commercial" | "closing";
-const FUNCTION_URL = "https://wmpttwpkybynwisdsljl.supabase.co/functions/v1/launch-waitlist";
+const FUNCTION_URL = "https://lzaxogmrznaxudqekoua.supabase.co/functions/v1/prelaunch-interest";
 
 export function LaunchSignupDialog({ children, className, source, open: controlledOpen, onOpenChange }: { children?: ReactNode; className?: string; source: WaitlistSource; open?: boolean; onOpenChange?: (open: boolean) => void }) {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(false);
@@ -72,8 +72,8 @@ export function LaunchSignupDialog({ children, className, source, open: controll
           <div className="waitlist-success__copy"><p className="waitlist-success__eyebrow">Launch note reserved</p><h3>{successIsNew ? "You’re on the list." : "You’re already on the list."}</h3><p>{message}</p><small>Until then, you can keep exploring the example on this page.</small></div>
           <button className="waitlist-success__return" type="button" onClick={() => setDialogOpen(false)}>Back to the demo <ArrowRight size={15} /></button>
         </div> : <form className="waitlist-dialog__form" onSubmit={submit} noValidate>
-          <label htmlFor={inputId}>Work email</label>
-          <input id={inputId} type="email" autoComplete="email" inputMode="email" placeholder="you@company.com" value={email} onChange={(event) => { const next = event.target.value; setEmail(next); if (validationError) setValidationError(getEmailValidationMessage(next)); }} onBlur={() => setValidationError(getEmailValidationMessage(email))} aria-invalid={Boolean(validationError)} aria-describedby={validationError ? errorId : undefined} disabled={isSubmitting} />
+          <label htmlFor={inputId}>Email</label>
+          <input id={inputId} type="email" autoComplete="email" inputMode="email" placeholder="your@email.com" value={email} onChange={(event) => { const next = event.target.value; setEmail(next); if (validationError) setValidationError(getEmailValidationMessage(next)); }} onBlur={() => setValidationError(getEmailValidationMessage(email))} aria-invalid={Boolean(validationError)} aria-describedby={validationError ? errorId : undefined} disabled={isSubmitting} />
           {validationError && <p id={errorId} className="waitlist-dialog__error" role="alert">{validationError}</p>}
           {message && <p className="waitlist-dialog__error" role="alert">{message}</p>}
           <button className="waitlist-dialog__submit" type="submit" disabled={isSubmitting}>{isSubmitting ? "Saving your place…" : <>Notify me of launch <ArrowRight size={16} /></>}</button>

@@ -93,34 +93,33 @@ export const HOME = {
       { label: "Phronesis Labs", href: BRAND.parentUrl },
       { label: "Business Time Back" },
     ],
-    title: "Win back hours for your small business",
-    sub: "Business Time Back is a time-intelligence tool from Phronesis Labs for small business owners — running a shop, a local service business, an online store, or a digital service. It shows you where your week actually goes — admin, inventory, customer service, marketing, and fulfillment — and turns that into a concrete plan to win back hours for growing the business or serving customers directly.",
-    cta: "Show me my opportunities",
+    title: "Make room for the work only you can do",
+    sub: "Business Time Back turns quick, self-reported estimates of admin, inventory, customer service, marketing, and fulfillment into a concrete plan to win back hours — without monitoring anyone.",
+    cta: "Notify me of launch",
   },
 
   what: {
-    eyebrow: "What it is",
-    heading: "What is Business Time Back?",
-    lead: "Business Time Back is a time-intelligence tool from Phronesis Labs, built for small business owners — whether you run a shop, a local service business, an online store, or a digital service. It helps you see where your week actually goes, and turn that picture into a concrete plan to win back hours for the work that matters most.",
+    eyebrow: "The problem is not a lack of effort",
+    heading: "Your calendar is not the whole story",
+    lead: "You are already working hard. The question is which routines are quietly taking the hours your customers, your growth, and your best work need.",
     body: [
-      "It works from the task level up. Instead of guessing, you map a quick estimate of the hours you spend on the tasks that come with running a small business — admin and bookkeeping, inventory, customer service, marketing, and fulfillment. Those estimates roll up into a clear picture of how much time is recoverable, where the biggest opportunities are, and which single change is worth making first.",
-      "The goal is more hours for growing the business and serving customers directly — not another productivity guilt trip. Recovered hours can go toward the work only you can do — sales, relationships, and the reason you started the business — rather than get swallowed by the operational side of running it. Whether that time becomes growth or a lighter week is your call; the tool just makes it visible.",
+      "Admin, bookkeeping, inventory, customer messages, marketing, and fulfillment are all part of running a business. But when they expand without anyone seeing the full picture, they start to take time from the work only you can do. Business Time Back makes those patterns visible enough to improve.",
     ],
   },
 
   howItWorks: {
     eyebrow: "How it works",
-    heading: "Three steps, from a rough estimate to a plan",
+    heading: "Start with what you already know",
     cards: [
       {
         n: "01",
         title: "Map the everyday",
-        body: "Estimate your weekly hours across the tasks that make up running the business — admin, inventory, customer service, marketing, and fulfillment. A rough estimate is enough — precision matters less than direction.",
+        body: "Make a quick estimate of the time you spend on the tasks that come with running the business — admin, inventory, customer service, marketing, fulfillment. Direction matters more than false precision.",
       },
       {
         n: "02",
         title: "See what's recoverable",
-        body: "Your time map rolls up into recoverable hours by area of the business, and ranks the areas with the biggest opportunity to win time back.",
+        body: "Your estimates roll up into an opportunity map, showing where routine work clusters and how many hours are recoverable.",
       },
       {
         n: "03",
@@ -129,39 +128,12 @@ export const HOME = {
       },
     ],
     footnote:
-      "The estimates come from a curated task library and a workforce model — the same one behind Phronesis Labs' [AI Job Risk Check](https://aijobriskcheck.com) — not a promise that any specific hour disappears.",
-  },
-
-  beforeAfter: {
-    eyebrow: "Transform your week",
-    heading: "From stuck in operations to focused on growth",
-    before: {
-      title: "Before",
-      stat: "40-50%",
-      caption: "of your week lost to admin, inventory, and operations",
-      points: [
-        "Constant firefighting",
-        "No time for strategic work",
-        "Growth stalled by busywork",
-        "Team management neglected",
-      ],
-    },
-    after: {
-      title: "After using Business Time Back",
-      stat: "15-25%",
-      caption: "time on operations with one focused change",
-      points: [
-        "Clear visibility into where hours go",
-        "Prioritized, high-impact improvements",
-        "5-10 hours/week recovered",
-        "Time for growth and relationships",
-      ],
-    },
+      "The demo on this page is illustrative. Business Time Back begins with self-reported task estimates; the owner's view makes patterns visible without monitoring anyone. The model behind the numbers is the same one behind Phronesis Labs' [AI Job Risk Check](https://aijobriskcheck.com) — not a promise that any specific hour disappears.",
   },
 
   useCases: {
     eyebrow: "Who it's for",
-    heading: "Any small business that loses hours to running itself",
+    heading: "When routine work becomes invisible overhead",
     intro:
       "Business Time Back fits owners who wear every hat — physical or online. A few examples:",
     items: [
@@ -178,158 +150,39 @@ export const HOME = {
         body: "Less time on order-status messages and listing upkeep, more time growing the catalog.",
       },
       {
-        title: "Digital service providers",
-        body: "Less time on admin and status updates, more time on billable, high-value work.",
-      },
-      {
         title: "Cafés & restaurants",
         body: "Less time on supplier orders and scheduling, more time on the food and the room.",
-      },
-      {
-        title: "Solo owners & small teams",
-        body: "A clear picture of where the week actually goes — and one change worth making first.",
       },
     ],
   },
 
   limits: {
-    eyebrow: "Honest limits",
-    heading: "What it doesn't do",
+    eyebrow: "Why this is different",
+    heading: "A plan for your week, not a time tracker",
     items: [
       {
         icon: "shield" as const,
-        title: "It's not surveillance.",
-        body: "Business Time Back works from your own self-reported estimates — not activity tracking, keystroke logging, or screen monitoring, even if you have people helping you run things.",
+        title: "Private by design.",
+        body: "Self-reported estimates, not activity records — no tracking of you or anyone helping you run the business.",
       },
       {
         icon: "target" as const,
-        title: "Estimates are directional.",
-        body: "They identify opportunities and rank them; they don't guarantee a specific number of hours saved.",
+        title: "Directional on purpose.",
+        body: "The estimates identify and rank opportunities; they don't guarantee a specific number of hours saved.",
       },
       {
         icon: "spark" as const,
-        title: "It won't replace judgment.",
-        body: "The point is to protect the work only you can do — sales, relationships, and the parts of the business you built it for — and hand back the busywork.",
+        title: "Capacity, not guilt.",
+        body: "The tool makes trade-offs visible; you choose where recovered hours go — customers, growth, or a lighter week.",
       },
     ],
   },
-
-  testimonials: {
-    eyebrow: "Social proof",
-    heading: "What small business owners say",
-    items: [
-      {
-        quote:
-          "I recovered 8 hours a week just by seeing where my time actually goes. This paid for itself in two weeks.",
-        initials: "MJ",
-        name: "Maria Johnson",
-        role: "Ecommerce Store Owner",
-      },
-      {
-        quote:
-          "Finally, a tool that doesn't just track time — it helps me win it back. Changed how I run my business.",
-        initials: "DR",
-        name: "David Rodriguez",
-        role: "Local Service Business Owner",
-      },
-      {
-        quote:
-          "As someone who does everything, this gave me permission to stop doing 3 things that were costing me 10 hours a week.",
-        initials: "SA",
-        name: "Sarah Anderson",
-        role: "Café Owner",
-      },
-    ],
-    videoEyebrow: "See it in action",
-    videoLabel:
-      "[Video: Small business owner walks through their Business Time Back workspace and shares results]",
-  },
-
-  pricing: {
-    eyebrow: "Simple pricing",
-    heading: "Choose your plan",
-    ctaLabel: "Join the pre-launch list",
-    ctaNote: "Not on sale yet — join the list for 35% off at launch.",
-    plans: [
-      {
-        name: "Starter",
-        currency: "$",
-        amount: "29",
-        period: "/month",
-        desc: "Perfect for solo owners just getting started",
-        features: [
-          "Full time mapping tool",
-          "Recoverable hours analysis",
-          "Email support",
-          "3 business models included",
-        ],
-        featured: false,
-        contact: false,
-      },
-      {
-        name: "Professional",
-        currency: "$",
-        amount: "79",
-        period: "/month",
-        desc: "For growing small businesses and teams",
-        features: [
-          "Everything in Starter, plus:",
-          "Team workspace (up to 5 people)",
-          "Custom scenarios and modeling",
-          "Priority support",
-          "Monthly strategy calls",
-        ],
-        featured: true,
-        badge: "Most Popular",
-        contact: false,
-      },
-      {
-        name: "Enterprise",
-        customPrice: "Custom pricing",
-        desc: "For complex organizations or custom needs",
-        features: [
-          "Everything in Professional, plus:",
-          "Unlimited team members",
-          "Custom integrations",
-          "Dedicated support",
-          "Custom data models",
-        ],
-        featured: false,
-        contact: true,
-        contactLabel: "Contact sales",
-        contactNote: "Let's talk about your needs",
-      },
-    ],
-    guarantee: {
-      title: "Not on sale yet",
-      body: [
-        "**You can't buy Business Time Back today.** We're pre-launch, so the form below collects emails from people who want in — nothing more. No card, no charge, no trial clock running.",
-        "**Everyone on the pre-launch list gets 35% off** when plans open, on whichever plan they choose.",
-        "Once plans do go on sale, they carry a **30-day full refund**: if Business Time Back doesn't save you hours, we refund 100% of your first month.",
-      ],
-    },
-  },
-
-  demoGate: {
-    heading: "See your opportunities in action",
-    sub: "Explore a fully-populated sample workspace. No credit card needed.",
-    placeholder: "your@email.com",
-    button: "Access live demo",
-    busyButton: "Launching demo...",
-    note: "No credit card required • 35% off at launch for everyone on this list • Unsubscribe anytime",
-  },
-
-  securityBadges: [
-    { icon: "shield" as const, label: "No Activity Tracking" },
-    { icon: "lock" as const, label: "SSL Encrypted" },
-    { icon: "trash" as const, label: "Delete Your Data Anytime" },
-  ],
 
   comparison: {
     eyebrow: "How it compares",
     heading: "Business Time Back vs. time tracking",
     intro:
-      'Time trackers record hours after the fact. Business Time Back estimates where hours go **by task** and shows what\'s recoverable. One answers "what happened," the other answers "what to change first."',
+      'Time trackers document activity after it has happened. Business Time Back estimates where hours go **by task** and helps you choose the change to make next. One answers "what happened," the other answers "what to change first."',
     columns: [
       "",
       "Time Intelligence\n(Business Time Back)",
@@ -379,32 +232,20 @@ export const HOME = {
     heading: "Frequently asked questions",
     items: [
       {
-        q: "What is Business Time Back?",
-        a: "A time-intelligence tool from Phronesis Labs for small business owners. It shows you where your week goes across admin, inventory, customer service, marketing, and fulfillment, then helps you plan how to win back hours for growing the business.",
+        q: "Does Business Time Back monitor me or my staff?",
+        a: "No. Business Time Back starts with self-reported estimates of everyday tasks. It does not use activity tracking, keystroke logging, screen monitoring, or surveillance tools — for you or for anyone helping you run the business.",
       },
       {
-        q: "How is it different from time tracking?",
-        a: "Time trackers record what already happened, often by monitoring activity. Business Time Back starts from your own quick self-estimates by task, and focuses on what time is recoverable and what single change to make first — not on surveilling anyone.",
+        q: "How do the estimates become useful?",
+        a: "The goal is direction, not false precision. Task-level estimates roll up into a clear picture of your week that shows where time is being absorbed and which change offers the clearest first move.",
       },
       {
-        q: "Does it track me automatically?",
-        a: "No. It uses self-reported estimates, not activity tracking, keystrokes, or screen monitoring — for you or for anyone helping you run the business.",
+        q: "What does 'recoverable time' mean?",
+        a: "An estimate of time that could be reduced or streamlined — not a promise that any specific hour disappears. You decide whether that capacity goes to customers, growth, or a lighter week.",
       },
       {
-        q: 'What does "recoverable hours" mean?',
-        a: "An estimate of the time spent on tasks that could be reduced or streamlined, based on a curated task library — not a promise those hours vanish. Whether recovered time becomes growth, a lighter week, or something else is your call.",
-      },
-      {
-        q: "How accurate are the estimates?",
-        a: "They're directional. A quick estimate is enough to surface where the biggest opportunities are; precision matters less than direction.",
-      },
-      {
-        q: "Who makes it?",
-        a: "Phronesis Labs, a thought lab and idea incubator founded by Brooke Houck, PhD, building on the same workforce model behind the AI Job Risk Check.",
-      },
-      {
-        q: "What if I'm not satisfied?",
-        a: "We offer a full 30-day refund guarantee. If Business Time Back doesn't help you find and plan for recoverable hours in your first month, we'll refund 100% of your subscription cost — no questions asked.",
+        q: "Who is it most useful for?",
+        a: "Small business owners who wear a lot of hats — running a shop, a local service business, an online store, or a digital service — where admin, inventory, customer service, marketing, and fulfillment quietly eat into the week.",
       },
     ],
   },

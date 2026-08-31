@@ -1,2 +1,0 @@
-/** High-specificity layout guard for the animated confirmation panel. */
-.waitlist-dialog .waitlist-dialog__success{display:grid;justify-items:center;text-align:center;gap:19px;margin-top:26px;padding:8px 8px 3px;color:var(--ink)}.waitlist-dialog .waitlist-success__mark{flex:0 0 auto}.waitlist-dialog .waitlist-success__return{justify-self:center;margin-top:1px}

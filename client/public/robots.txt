@@ -1,0 +1,31 @@
+# robots.txt for https://businesstimeback.com
+# All crawlers, including AI/LLM agents, are welcome.
+User-agent: *
+Allow: /
+
+# Explicitly welcomed AI / LLM agents
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://businesstimeback.com/sitemap.xml

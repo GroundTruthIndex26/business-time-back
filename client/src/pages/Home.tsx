@@ -4,7 +4,7 @@
  */
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
-import { BRAND, FOOTER_LINKS, HOME, META } from "@/content/site";
+import { BRAND, FOOTER_LINKS, HOME, META, NAV } from "@/content/site";
 import { Icon } from "@/components/Icons";
 import { PageMeta } from "@/components/PageMeta";
 import { Rich, SmartLink } from "@/components/Rich";
@@ -91,6 +91,13 @@ export default function Home() {
           <Icon.info />
           Business Time Back
         </Link>
+        <nav className="sh-nav" aria-label="Main navigation">
+          {NAV.map(item => (
+            <Link key={item.href} href={item.href}>
+              {item.label}
+            </Link>
+          ))}
+        </nav>
         <a
           className="sh-cta"
           href="#demo-gate"
@@ -104,22 +111,31 @@ export default function Home() {
       </div>
 
       <header className="site-header">
-        <nav className="crumbs" aria-label="Breadcrumb">
-          <ol>
-            {HOME.hero.crumbs.map(c => (
-              <li
-                key={c.label}
-                {...(c.href ? {} : { "aria-current": "page" as const })}
-              >
-                {c.href ? (
-                  <SmartLink href={c.href}>{c.label}</SmartLink>
-                ) : (
-                  c.label
-                )}
-              </li>
+        <div className="site-header__top">
+          <nav className="crumbs" aria-label="Breadcrumb">
+            <ol>
+              {HOME.hero.crumbs.map(c => (
+                <li
+                  key={c.label}
+                  {...(c.href ? {} : { "aria-current": "page" as const })}
+                >
+                  {c.href ? (
+                    <SmartLink href={c.href}>{c.label}</SmartLink>
+                  ) : (
+                    c.label
+                  )}
+                </li>
+              ))}
+            </ol>
+          </nav>
+          <nav className="site-nav" aria-label="Main navigation">
+            {NAV.map(item => (
+              <Link key={item.href} href={item.href}>
+                {item.label}
+              </Link>
             ))}
-          </ol>
-        </nav>
+          </nav>
+        </div>
         <h1 className="site-h1">{HOME.hero.title}</h1>
         <p className="site-sub">{HOME.hero.sub}</p>
         <a

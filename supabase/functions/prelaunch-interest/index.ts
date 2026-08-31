@@ -105,7 +105,9 @@ Deno.serve(async (request) => {
     const notifyError = await notify(email, isNew).catch((e) => String(e));
     if (notifyError) console.error("notify failed:", notifyError);
 
-    return new Response(JSON.stringify({ ok: true, isNew }), { headers });
+    return new Response(JSON.stringify({ ok: true, isNew, notify: notifyError ?? "sent" }), {
+      headers,
+    });
   } catch (error) {
     console.error("prelaunch-interest", error);
     return new Response(

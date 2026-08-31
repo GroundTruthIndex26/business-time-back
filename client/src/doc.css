@@ -1,0 +1,32 @@
+/**
+ * Better Work, Visible: extra primitives for the focused content pages —
+ * steps, comparison tables, FAQ accordions, and the closing CTA — in the same
+ * bone-paper / mineral-teal language as the rest of the site.
+ */
+.doc-h1{font-size:clamp(2.4rem,4.6vw,4rem)!important;line-height:1.02!important;max-width:880px;margin-inline:auto!important}
+.doc-body{margin-top:24px}
+.doc-body h2{margin-top:45px}
+.doc-body h3{margin:26px 0 10px;font-family:"DM Serif Display",Georgia,serif;font-size:1.35rem;letter-spacing:-.02em;font-weight:400}
+.doc-steps{list-style:none;margin:22px 0;padding:0;display:grid;gap:14px}
+.doc-steps li{display:flex;gap:16px;padding:18px 20px;border:1px solid var(--line);border-left:3px solid var(--teal-deep);background:#fdfbf4}
+.doc-steps__number{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:700;color:var(--teal-deep);padding-top:3px}
+.doc-steps b{display:block;margin-bottom:5px;font-size:14px;color:var(--ink)}
+.doc-steps p{margin:0;font-size:13px;line-height:1.75}
+.doc-table-wrap{margin:24px 0;overflow-x:auto;border:1px solid var(--line);background:#fdfbf4}
+.doc-table{width:100%;min-width:640px;border-collapse:collapse;font-size:12.5px;line-height:1.6}
+.doc-table th,.doc-table td{padding:12px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);color:#4b6567}
+.doc-table thead th{font-family:"IBM Plex Mono",monospace;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);background:#f3eddc}
+.doc-table thead th:nth-child(2){color:var(--teal-deep)}
+.doc-table tbody th{font-weight:700;color:var(--ink);white-space:nowrap}
+.doc-table tbody td:first-of-type{background:rgba(18,165,150,.06)}
+.doc-faq{margin:24px 0;display:grid;gap:10px}
+.doc-faq details{border:1px solid var(--line);background:#fdfbf4}
+.doc-faq summary{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:15px 18px;cursor:pointer;list-style:none;font-size:13.5px;font-weight:700;color:var(--ink)}
+.doc-faq summary::-webkit-details-marker{display:none}
+.doc-faq summary svg{flex:0 0 auto;color:var(--teal-deep);transition:transform .18s ease-out}
+.doc-faq details[open] summary svg{transform:rotate(180deg)}
+.doc-faq details p{margin:0;padding:0 18px 16px;font-size:13px;line-height:1.8}
+.doc-cta{margin-top:40px}
+.doc-cta__button{display:inline-flex;align-items:center;gap:9px;padding:14px 22px;background:var(--teal-deep);color:#f6fbf7!important;font-size:13px;font-weight:800;text-decoration:none!important;border-radius:999px;transition:background .18s ease-out}
+.doc-cta__button:hover{background:var(--ink)}
+@media(max-width:700px){.doc-steps li{padding:14px 15px}.doc-table{font-size:12px}}

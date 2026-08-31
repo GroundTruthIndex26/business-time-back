@@ -2,15 +2,101 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#f8f4e9" />
-    <meta name="description" content="Business Time Back helps operations leaders see where working hours go and make a plan to give time back to meaningful work." />
-    <link rel="icon" type="image/png" href="%BASE_URL%assets/btb-rebuild-capacity-mark.png" />
-    <title>Business Time Back — Make Room for Work That Matters</title>
+    <link rel="icon" href="./favicon.ico" sizes="any" />
+
+    <title>Business Time Back — Win Back Hours for Your Small Business</title>
+    <meta
+      name="description"
+      content="See where your week actually goes — admin, inventory, customer service, marketing, fulfillment — and plan how to win back hours to grow your business."
+    />
+    <link rel="canonical" href="https://businesstimeback.com/" />
+    <meta name="msvalidate.01" content="C3E6025B2C0F68DAE8E4D9AFDFE8B6A0" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Business Time Back" />
+    <meta
+      property="og:title"
+      content="Business Time Back — Win Back Hours for Your Small Business"
+    />
+    <meta
+      property="og:description"
+      content="See where your week actually goes — admin, inventory, customer service, marketing, fulfillment — and plan how to win back hours to grow your business."
+    />
+    <meta property="og:url" content="https://businesstimeback.com/" />
+    <meta property="og:image" content="https://businesstimeback.com/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Business Time Back by Phronesis Labs — win back hours for your small business"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://businesstimeback.com/og.png" />
+    <meta
+      name="twitter:title"
+      content="Business Time Back — by Phronesis Labs"
+    />
+    <meta
+      name="twitter:description"
+      content="See where your week actually goes and plan how to win back hours for growing the business."
+    />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-M39V13DWWH"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-M39V13DWWH");
+    </script>
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "y7uiy3hso6");
+    </script>
+
+    <!-- Privacy-friendly analytics by Plausible -->
+    <script
+      defer
+      src="https://plausible.io/js/pa-taDmXSuQFRGtq3sYSndR1.js"
+    ></script>
+    <script>
+      window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments);
+        };
+      plausible.init =
+        plausible.init ||
+        function (i) {
+          plausible.o = i || {};
+        };
+      plausible.init();
+    </script>
   </head>
-  <body>
+  <body class="page-home">
     <div id="root"></div>
     <script>
+      // GitHub Pages 404 fallback hands the real path back through ?p=
       (function () {
         var page = new URLSearchParams(window.location.search).get("p");
         if (page) window.history.replaceState(null, "", page);
